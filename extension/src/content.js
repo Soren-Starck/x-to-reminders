@@ -25,11 +25,14 @@
   let lastSync = 0;
   let synced = false;
 
+  // Once the extension is updated or removed, this copy can no longer read its
+  // translations; it only ever needs these two then.
+  const FALLBACK = { errReload: "X to Reminders was updated. Reload this page.", errReloadAction: "Reload" };
   const t = (key, sub) => {
     try {
-      return chrome.i18n.getMessage(key, sub) || key;
+      return chrome.i18n.getMessage(key, sub) || FALLBACK[key] || key;
     } catch {
-      return key;
+      return FALLBACK[key] || key;
     }
   };
 
@@ -207,10 +210,24 @@
   // ---- Scanning the page ----
 
   let observer = null;
+  let timer = 0;
+
+  // An updated (or removed) extension cuts this copy off. It then takes its own
+  // buttons away; the new copy, if any, puts live ones back.
+  function retired() {
+    if (alive && chrome.runtime?.id && window.__xToReminders === me) return false;
+    if (observer) {
+      observer.disconnect();
+      observer = null;
+      clearInterval(timer);
+      for (const wrap of document.querySelectorAll(".xtr-wrap")) if (wrap.dataset.xtrOwner === owner) wrap.remove();
+    }
+    alive = false;
+    return true;
+  }
 
   function scan() {
-    if (!chrome.runtime?.id || window.__xToReminders !== me) alive = false;
-    if (!alive) return observer?.disconnect();
+    if (retired()) return;
     let bars = 0;
     let missed = 0;
     for (const bar of document.querySelectorAll('article [role="group"]')) {
@@ -443,7 +460,7 @@
       attributes: true,
       attributeFilter: ["href", "data-href"],
     });
-    setInterval(theme, 2000);
+    timer = setInterval(() => retired() || theme(), 2000);
     document.addEventListener("visibilitychange", () => {
       if (!document.hidden && Date.now() - lastSync > 45_000) sync(false);
       schedule();

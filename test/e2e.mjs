@@ -316,6 +316,7 @@ try {
   fs.writeFileSync(path.join(ext, "manifest.json"), JSON.stringify(bumped));
   page = await c.open(`${site}/classic.html`);
   await waitFor(() => page.eval(`document.querySelectorAll(".xtr-wrap").length === 2`), "buttons");
+  const before = await page.eval(`[...document.querySelectorAll(".xtr-wrap")].map((w) => w.dataset.xtrOwner)`);
   const version = await waitFor(async () => {
     const popup = await c.open(`chrome-extension://${extId}/src/popup.html`);
     await sleep(400);
@@ -323,8 +324,8 @@ try {
   }, "self-update", 20000).catch(() => null);
   check("an unpacked copy updated on disk reloads itself", version === "9.9.9", version);
   await page.send("Page.bringToFront");
-  await waitFor(() => page.eval(`document.querySelectorAll(".xtr-wrap").length === 2`), "buttons after update");
-  check("the open page keeps one button per post, without a reload", (await page.eval(`document.querySelectorAll(".xtr-wrap").length`)) === 2);
+  await waitFor(() => page.eval(`(() => { const w = [...document.querySelectorAll(".xtr-wrap")]; return w.length === 2 && w.every((x) => !${JSON.stringify(before)}.includes(x.dataset.xtrOwner)); })()`), "buttons from the new version", 8000);
+  check("the open page gets the new version's buttons, one per post, without a reload", true);
   fs.writeFileSync(path.join(ext, "manifest.json"), JSON.stringify(manifest));
   await page.click(btn("c1"));
   const toastDenied = await waitFor(() => page.eval(`window.__toasts.at(-1)`), "toast", 15000);

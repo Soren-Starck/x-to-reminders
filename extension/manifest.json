@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "__MSG_name__",
   "short_name": "X to Reminders",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "__MSG_description__",
   "default_locale": "en",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsZYW8iO5VBGJpOMpP5QQ5ql5fDejOIJRpEMK1azb2q4tRqI26mtIcO1bMWZ/NYlPRx813iCs34Q8LO2BYZwckIg1XrIpZQXrXberEhG41GI8ho0Zre8LUZ704yhnTx4iCIb4XajodN0tGyAPVUqH9W0bwEaayXBDc6m+iBBLtRdsZLaufaCnO3/MbCwrU6gj+dmWh52ckmN/ercMHEfXYjm8xrQXAXzsWlIiOYgFmX+eqjszt7dQixluJ6YdDuH6hlIl+ee1XKrJ+nrbX1vWNuI9KvTWevmrZgoeSNexwgiUkxYheReVTF+PKiGIuvKH+1UC8heyqVzDkD2BRKuJeQIDAQAB",
