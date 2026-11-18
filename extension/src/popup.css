@@ -1,0 +1,65 @@
+:root {
+  color-scheme: light dark;
+  --fg: rgb(15, 20, 25);
+  --muted: rgb(83, 100, 113);
+  --bg: #fff;
+  --line: rgb(239, 243, 244);
+  --accent: #ff9500;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: rgb(231, 233, 234);
+    --muted: rgb(113, 118, 123);
+    --bg: rgb(0, 0, 0);
+    --line: rgb(47, 51, 54);
+    --accent: #ff9f0a;
+  }
+}
+body {
+  width: 280px;
+  margin: 0;
+  padding: 14px 16px 12px;
+  background: var(--bg);
+  color: var(--fg);
+  font: 14px/20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+p {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+.dot {
+  flex: 0 0 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+.ready .dot { background: rgb(0, 186, 124); }
+.first .dot { background: var(--accent); }
+.problem .dot { background: rgb(244, 33, 46); }
+button {
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--fg);
+  color: var(--bg);
+  font: 700 14px/20px inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+footer {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+a { color: inherit; }

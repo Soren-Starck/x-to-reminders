@@ -1,0 +1,21 @@
+{
+  "name": { "message": "X to Reminders" },
+  "description": { "message": "Ajoute à chaque post sur X un bouton qui enregistre son lien dans Rappels d'Apple, en un clic." },
+  "add": { "message": "Ajouter aux Rappels" },
+  "adding": { "message": "Ajout aux Rappels…" },
+  "already": { "message": "Déjà dans « $LIST$ »", "placeholders": { "list": { "content": "$1" } } },
+  "inReminders": { "message": "Dans Rappels" },
+  "errNoHost": { "message": "L'assistant Rappels n'est pas installé sur ce Mac." },
+  "errNoHostAction": { "message": "Guide d'installation" },
+  "errDenied": { "message": "L'accès à Rappels est désactivé pour X to Reminders." },
+  "errDeniedAction": { "message": "Ouvrir Réglages" },
+  "errTimeout": { "message": "Rappels n'a pas répondu. Réessayez." },
+  "errReload": { "message": "X to Reminders a été mis à jour. Rechargez la page." },
+  "errReloadAction": { "message": "Recharger" },
+  "errGeneric": { "message": "Impossible d'ajouter ce post à Rappels. Réessayez." },
+  "popupReady": { "message": "Prêt. Les posts vont dans « $LIST$ ».", "placeholders": { "list": { "content": "$1" } } },
+  "popupFirst": { "message": "Prêt. Au premier post ajouté, macOS demande une fois l'accès à Rappels." },
+  "popupDenied": { "message": "L'accès à Rappels est désactivé. Activez X to Reminders dans Confidentialité et sécurité, Rappels." },
+  "popupNoHost": { "message": "Encore une étape : installez le petit assistant qui parle à Rappels." },
+  "popupChecking": { "message": "Vérification…" }
+}

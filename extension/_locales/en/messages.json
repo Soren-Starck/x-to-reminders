@@ -1,0 +1,21 @@
+{
+  "name": { "message": "X to Reminders" },
+  "description": { "message": "Adds a button to every post on X that saves its link to Apple Reminders in one click." },
+  "add": { "message": "Add to Reminders" },
+  "adding": { "message": "Adding to Reminders…" },
+  "already": { "message": "Already in $LIST$", "placeholders": { "list": { "content": "$1" } } },
+  "inReminders": { "message": "In Reminders" },
+  "errNoHost": { "message": "The Reminders helper isn't installed on this Mac." },
+  "errNoHostAction": { "message": "Setup guide" },
+  "errDenied": { "message": "Reminders access is turned off for X to Reminders." },
+  "errDeniedAction": { "message": "Open Settings" },
+  "errTimeout": { "message": "Reminders didn't answer. Try again." },
+  "errReload": { "message": "X to Reminders was updated. Reload this page." },
+  "errReloadAction": { "message": "Reload" },
+  "errGeneric": { "message": "Couldn't add this post to Reminders. Try again." },
+  "popupReady": { "message": "Ready. New posts go to $LIST$.", "placeholders": { "list": { "content": "$1" } } },
+  "popupFirst": { "message": "Ready. The first time you add a post, macOS asks once for access to Reminders." },
+  "popupDenied": { "message": "Reminders access is off. Turn on X to Reminders in Privacy & Security, Reminders." },
+  "popupNoHost": { "message": "One more step: install the small helper that talks to Reminders." },
+  "popupChecking": { "message": "Checking…" }
+}

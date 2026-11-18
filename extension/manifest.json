@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_name__",
+  "short_name": "X to Reminders",
+  "version": "1.0.2",
+  "description": "__MSG_description__",
+  "default_locale": "en",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsZYW8iO5VBGJpOMpP5QQ5ql5fDejOIJRpEMK1azb2q4tRqI26mtIcO1bMWZ/NYlPRx813iCs34Q8LO2BYZwckIg1XrIpZQXrXberEhG41GI8ho0Zre8LUZ704yhnTx4iCIb4XajodN0tGyAPVUqH9W0bwEaayXBDc6m+iBBLtRdsZLaufaCnO3/MbCwrU6gj+dmWh52ckmN/ercMHEfXYjm8xrQXAXzsWlIiOYgFmX+eqjszt7dQixluJ6YdDuH6hlIl+ee1XKrJ+nrbX1vWNuI9KvTWevmrZgoeSNexwgiUkxYheReVTF+PKiGIuvKH+1UC8heyqVzDkD2BRKuJeQIDAQAB",
+  "minimum_chrome_version": "116",
+  "permissions": ["nativeMessaging", "scripting"],
+  "host_permissions": ["https://x.com/*", "https://twitter.com/*", "https://mobile.x.com/*", "https://mobile.twitter.com/*"],
+  "background": { "service_worker": "src/background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*", "https://mobile.x.com/*", "https://mobile.twitter.com/*"],
+      "js": ["src/content.js"],
+      "css": ["src/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "__MSG_name__",
+    "default_popup": "src/popup.html",
+    "default_icon": { "16": "icons/16.png", "32": "icons/32.png" }
+  },
+  "icons": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "homepage_url": "https://github.com/Soren-Starck/x-to-reminders"
+}

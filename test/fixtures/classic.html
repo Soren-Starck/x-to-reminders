@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>classic</title><link rel="stylesheet" href="x.css"></head>
+<body><div id="react-root"><main>
+
+<div data-testid="cellInnerDiv" id="c1">
+<article data-testid="tweet" role="article" tabindex="0">
+  <div data-testid="User-Name"><a href="/alice">Alice</a> <a href="/alice/status/1111111111111111111" role="link"><time datetime="2026-11-18T08:00:00.000Z">2h</time></a></div>
+  <div data-testid="tweetText">A post that quotes another one.</div>
+  <div role="link" tabindex="0" class="quote">
+    <div data-testid="User-Name"><span>Bob</span> <time datetime="2026-11-17T08:00:00.000Z">1d</time></div>
+    <a href="/bob/status/2222222222222222222/photo/1">photo</a>
+  </div>
+  <div role="group" class="bar" aria-label="21 replies, 13 reposts, 355 likes, 20000 views">
+    <div><button data-testid="reply" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg><span>21</span></button></div>
+    <div><button data-testid="retweet" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg><span>13</span></button></div>
+    <div><button data-testid="unlike" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg><span>355</span></button></div>
+    <div><a href="/alice/status/1111111111111111111/analytics" aria-label="20000 views"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg><span>20K</span></a></div>
+    <div class="right">
+      <div><button data-testid="bookmark" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></button></div>
+      <div><button aria-label="Share post" aria-haspopup="menu" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></button></div>
+    </div>
+  </div>
+</article>
+</div>
+
+<div data-testid="cellInnerDiv" id="c2">
+<article data-testid="tweet" role="article" tabindex="0">
+  <div data-testid="socialContext"><a href="/dave">Dave reposted</a></div>
+  <div data-testid="User-Name"><a href="/carol">Carol</a> <a href="/carol/status/3333333333333333333" role="link"><time datetime="2026-11-16T08:00:00.000Z">2d</time></a></div>
+  <div data-testid="tweetText">A repost: the button saves Carol's post.</div>
+  <div role="group" class="bar">
+    <div><button data-testid="reply" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></button></div>
+    <div><button data-testid="retweet" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></button></div>
+    <div><button data-testid="like" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></button></div>
+    <div class="right">
+      <div><button data-testid="removeBookmark" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></button></div>
+      <div><button aria-label="Share post" aria-haspopup="menu" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></button></div>
+    </div>
+  </div>
+</article>
+</div>
+
+<div data-testid="cellInnerDiv" id="c3">
+<article data-testid="tweet" role="article" tabindex="0">
+  <div data-testid="tweetText">A post whose link X has not drawn yet.</div>
+  <div role="group" class="bar">
+    <div><button data-testid="reply" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></button></div>
+    <div><button data-testid="like" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></button></div>
+    <div class="right"><div><button data-testid="bookmark" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></button></div></div>
+  </div>
+</article>
+</div>
+
+</main></div>
+<script>
+  // Stand-in for X opening a post when its card is clicked.
+  window.__opened = [];
+  document.getElementById("react-root").addEventListener("click", (e) => {
+    const a = e.target.closest("article");
+    if (a) window.__opened.push(a.parentElement.id);
+  });
+  window.addPost = (id, handle, postId) => {
+    const c = document.getElementById("c2").cloneNode(true);
+    c.id = id;
+    c.querySelector(".xtr-wrap")?.remove();
+    c.querySelector('[data-testid="socialContext"]').remove();
+    const a = c.querySelector('a[href*="/status/"]');
+    a.setAttribute("href", "/" + handle + "/status/" + postId);
+    document.querySelector("main").append(c);
+  };
+</script>
+</body></html>

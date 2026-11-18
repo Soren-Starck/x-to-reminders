@@ -1,0 +1,26 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build the helper
+        run: sh host/build.sh
+      - name: Helper protocol
+        run: node test/host.test.mjs
+      - name: Chrome for Testing
+        run: |
+          npx --yes @puppeteer/browsers install chrome@stable --path "$RUNNER_TEMP/browsers" | tee chrome.txt
+          echo "CHROME=$(tail -n 1 chrome.txt | cut -d' ' -f2-)" >> "$GITHUB_ENV"
+      - name: Extension end to end
+        run: node test/e2e.mjs

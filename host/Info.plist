@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>X to Reminders</string>
+	<key>CFBundleExecutable</key>
+	<string>x-to-reminders-host</string>
+	<key>CFBundleIdentifier</key>
+	<string>studio.starck.x-to-reminders.host</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>X to Reminders</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>12.0</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>X to Reminders adds the posts you pick on X to your Reminders. It only adds new reminders and never changes or deletes existing ones.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>X to Reminders adds the posts you pick on X to your Reminders. It only adds new reminders and never changes or deletes existing ones.</string>
+</dict>
+</plist>

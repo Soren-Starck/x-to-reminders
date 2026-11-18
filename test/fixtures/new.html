@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>new</title><link rel="stylesheet" href="x.css"></head>
+<body class="new"><div id="root"><main>
+
+<div tabindex="-1" data-navigation-stop="" id="focused">
+<article class="flex flex-col gap-1">
+  <div><a href="/erin">Erin</a></div>
+  <div>The focused post on a post page, quoting another.</div>
+  <div aria-labelledby="q" id="q" role="link" data-navigation-stop="" data-href="/frank/status/5555555555555555555" data-slot="embedded-tweet-frame" tabindex="0" class="quote">
+    <a href="/frank/status/5555555555555555555"></a>
+    <article><span>Frank</span> <a href="/frank/status/5555555555555555555">12h</a></article>
+  </div>
+  <a href="/erin/status/4444444444444444444">19:52 · 17 Nov 2026</a>
+  <a href="/erin/status/4444444444444444444">21.1K Views</a>
+  <div role="group" class="bar" aria-label="21 replies">
+    <div data-engagement-action="reply"><a href="/compose/post?in_reply_to=4444444444444444444"><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg> 21</span></a></div>
+    <div data-engagement-action="retweet"><button type="button"><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg> 13</span></button></div>
+    <div data-engagement-action="like"><button type="button"><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg> 360</span></button></div>
+    <div class="flex shrink-0 items-center right">
+      <div class=""><div data-engagement-action="bookmark"><button type="button"><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg> 303</span></button></div></div>
+      <button data-engagement-action="share" type="button"><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></span></button>
+    </div>
+  </div>
+</article>
+</div>
+
+<div role="link" tabindex="0" data-href="/gina/status/6666666666666666666" id="card">
+<article class="flex flex-col gap-1">
+  <div><a href="/gina">Gina</a> <a href="/gina/status/6666666666666666666">13h</a></div>
+  <div>A reply in the list below, signed out (the reply control is a button).</div>
+  <div role="group" class="bar">
+    <div data-engagement-action="reply"><button type="button"><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></span></button></div>
+    <div data-engagement-action="retweet"><button type="button"><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></span></button></div>
+    <div data-engagement-action="like"><button type="button"><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></span></button></div>
+    <div data-engagement-action="generic"><button type="button"><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></span></button></div>
+    <div class="flex shrink-0 items-center right">
+      <div class=""><div data-engagement-action="bookmark"><button type="button"><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></span></button></div></div>
+      <button data-engagement-action="share" type="button"><span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg></span></button>
+    </div>
+  </div>
+</article>
+</div>
+
+</main></div>
+<script>
+  window.__opened = [];
+  document.getElementById("root").addEventListener("click", (e) => {
+    const card = e.target.closest("[data-href]");
+    if (card) window.__opened.push(card.getAttribute("data-href"));
+  });
+</script>
+</body></html>
