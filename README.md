@@ -21,11 +21,12 @@ cd x-to-reminders
 ./install.sh
 ```
 
-The script builds the helper (`X to Reminders.app`, in `~/Library/Application Support/X to Reminders/`) and registers it with every Chromium browser it finds. Then, in your browser:
+The script builds the helper (`X to Reminders.app`, in `~/Library/Application Support/X to Reminders/`) and registers it with every Chromium browser it finds. Then add the extension:
 
-1. Open `chrome://extensions` and turn on **Developer mode**.
-2. Click **Load unpacked** and choose the `extension` folder.
-3. Open x.com and click the new button on any post. The first time, macOS asks once whether X to Reminders may use your Reminders: click **OK**.
+- from the [Chrome Web Store](https://chromewebstore.google.com/detail/fopfdggokepcffoippjlkfnmdomnlamk), or
+- from this folder: open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and choose `extension`.
+
+Open x.com and click the new button on any post. The first time, macOS asks once whether X to Reminders may use your Reminders: click **OK**.
 
 Click the extension's toolbar icon to check it is connected and see which list new posts go to.
 
@@ -35,7 +36,7 @@ Click the extension's toolbar icon to check it is connected and see which list n
 git pull && ./install.sh
 ```
 
-The extension notices the new version on disk and reloads itself the next time you open X; open tabs get the new button without a reload. Running `install.sh` again is only needed when the helper (`host/`) changed, and harmless otherwise.
+The store version updates itself through the Chrome Web Store. A copy loaded unpacked notices the new version on disk and reloads itself the next time you open X; open tabs get the new button without a reload. Running `install.sh` again is only needed when the helper (`host/`) changed, and harmless otherwise.
 
 ## Troubleshooting
 

@@ -9,7 +9,8 @@ set -eu
 ROOT=$(cd "$(dirname "$0")" && pwd)
 NAME="X to Reminders"
 HOST_ID="studio.starck.x_to_reminders"
-EXTENSION_ID="nehjlchbbfifoofocofjomhmabnijohb"
+# The Chrome Web Store copy and a copy loaded unpacked from this folder.
+EXTENSION_IDS="fopfdggokepcffoippjlkfnmdomnlamk nehjlchbbfifoofocofjomhmabnijohb"
 DEST="$HOME/Library/Application Support/$NAME"
 BIN="$DEST/$NAME.app/Contents/MacOS/x-to-reminders-host"
 SUPPORT="$HOME/Library/Application Support"
@@ -23,13 +24,15 @@ if [ -z "${XTR_APP:-}" ]; then
   sh "$ROOT/host/build.sh" >/dev/null
 fi
 mkdir -p "$DEST"
-rm -rf "$DEST/$NAME.app"
-cp -R "$APP" "$DEST/"
+if [ ! "$APP" -ef "$DEST/$NAME.app" ]; then
+  rm -rf "$DEST/$NAME.app"
+  cp -R "$APP" "$DEST/"
+fi
 "$BIN" --version >/dev/null || { echo "The helper does not run on this Mac."; exit 1; }
 echo "  installed in $DEST"
 
-ORIGINS="\"chrome-extension://$EXTENSION_ID/\""
-for id in ${XTR_EXTRA_EXTENSION_IDS:-}; do ORIGINS="$ORIGINS, \"chrome-extension://$id/\""; done
+ORIGINS=""
+for id in $EXTENSION_IDS ${XTR_EXTRA_EXTENSION_IDS:-}; do ORIGINS="${ORIGINS:+$ORIGINS, }\"chrome-extension://$id/\""; done
 
 register() {
   mkdir -p "$1/NativeMessagingHosts"
@@ -64,9 +67,10 @@ fi
 
 cat <<EOF
 
-Last step, in your browser:
-  1. Open chrome://extensions and turn on Developer mode.
-  2. Click "Load unpacked" and choose: $ROOT/extension
-  3. Open x.com and click the new button beside Bookmark on any post.
-     The first time, macOS asks once for access to Reminders.
+Last step, in your browser: add the extension from the Chrome Web Store
+  https://chromewebstore.google.com/detail/fopfdggokepcffoippjlkfnmdomnlamk
+or load this folder unpacked (chrome://extensions, Developer mode, Load unpacked):
+  $ROOT/extension
+Then open x.com and click the new button beside Bookmark on any post.
+The first time, macOS asks once for access to Reminders.
 EOF
